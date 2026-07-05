@@ -2,7 +2,7 @@ import HeroSection from '@/components/landing/HeroSection';
 import FeaturesSection from '@/components/landing/FeaturesSection';
 import HowItWorksSection from '@/components/landing/HowItWorksSection';
 import AIPipelineSection from '@/components/landing/AIPipelineSection';
-import Navbar from '@/components/layout/Navbar';
+import { Navbar } from '@/components/layout/Navbar';
 
 export default function Home() {
   return (
