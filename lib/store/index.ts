@@ -9,5 +9,11 @@ export const useUIStore = create((set) => ({
 
 export const useSongStore = create((set) => ({
   songs: [],
-  setSongs: (songs) => set({ songs }),
+  setSongs: (songs: any) => set({ songs }),
+}));
+
+export const useVoiceStore = create((set) => ({
+  voices: [],
+  setVoices: (voices: any) => set({ voices }),
+  addVoice: (voice: any) => set((state: any) => ({ voices: [...state.voices, voice] })),
 }));
