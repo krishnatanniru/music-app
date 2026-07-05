@@ -136,7 +136,7 @@ export default function VoiceLibraryClient() {
             className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4"
           >
             <AnimatePresence>
-              {voices.map((voice, i) => (
+              {voices.map((voice: VoiceProfile, i: number) => (
                 <motion.div
                   key={voice.id}
                   initial={{ opacity: 0, y: 20 }}
