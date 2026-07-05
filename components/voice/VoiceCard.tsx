@@ -117,13 +117,11 @@ export default function VoiceCard({ voice }: VoiceCardProps) {
 
   // ── Play preview ────────────────────────────────────────────────────────
   const handlePlayToggle = () => {
-    if (!voice.previewUrl) return;
-
+    if (!voice.url) return;
     if (!audioRef.current) {
-      audioRef.current = new Audio(voice.previewUrl);
+      audioRef.current = new Audio(voice.url);
       audioRef.current.onended = () => setIsPlaying(false);
     }
-
     if (isPlaying) {
       audioRef.current.pause();
       audioRef.current.currentTime = 0;
