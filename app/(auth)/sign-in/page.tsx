@@ -23,41 +23,6 @@ export default function SignInPage() {
         routing="hash"
         forceRedirectUrl="/dashboard"
         fallbackRedirectUrl="/dashboard"
-        appearance={{
-          layout: {
-            socialButtonsVariant: 'iconButton',
-            socialButtonsPlacement: 'top',
-          },
-          elements: {
-            rootBox: 'w-full',
-            card: 'bg-transparent shadow-none border-0 p-0',
-            headerTitle: 'hidden',
-            headerSubtitle: 'hidden',
-            socialButtonsIconButton:
-              'border border-white/10 bg-white/5 hover:bg-white/10 text-white transition-colors duration-150',
-            socialButtonsBlockButton:
-              'border border-white/10 bg-white/5 hover:bg-white/10 text-white transition-colors duration-150',
-            dividerLine: 'bg-white/10',
-            dividerText: 'text-white/40',
-            formFieldLabel: 'text-white/70 text-sm font-medium',
-            formFieldInput:
-              'bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus:border-purple-500/60 focus:ring-2 focus:ring-purple-500/20 rounded-xl transition-all duration-150',
-            formButtonPrimary:
-              'bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white font-semibold rounded-xl shadow-lg shadow-purple-500/20 transition-all duration-150 hover:shadow-purple-500/30',
-            footerActionLink:
-              'text-purple-400 hover:text-purple-300 font-medium',
-            identityPreviewText: 'text-white/70',
-            identityPreviewEditButton: 'text-purple-400 hover:text-purple-300',
-            formResendCodeLink: 'text-purple-400 hover:text-purple-300',
-            otpCodeFieldInput:
-              'border border-white/10 bg-white/5 text-white focus:border-purple-500 rounded-lg',
-            alertText: 'text-red-400',
-            formFieldErrorText: 'text-red-400 text-xs',
-            footer: 'bg-transparent',
-            logoBox: 'hidden',
-            logoImage: 'hidden',
-          },
-        }}
       />
     </div>
   );
