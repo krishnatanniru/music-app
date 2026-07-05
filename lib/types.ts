@@ -132,6 +132,7 @@ export interface VoiceProfile {
   language: Language;
   description: string;
   audioSamples: string[];
+  previewUrl?: string;
   voiceId: string;
   status: VoiceTrainingStatus;
   trainingProgress: number;
