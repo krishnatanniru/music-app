@@ -136,6 +136,7 @@ export interface VoiceProfile {
   voiceId: string;
   status: VoiceTrainingStatus;
   trainingProgress: number;
+  duration?: number;
   createdAt: string;
   updatedAt: string;
   isDefault: boolean;
