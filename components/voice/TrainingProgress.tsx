@@ -16,7 +16,7 @@ export default function TrainingProgress({ status, progress }: TrainingProgressP
       <div className="w-full bg-bg-secondary h-2 rounded-full overflow-hidden">
         <div 
           className="bg-accent-blue h-full transition-all duration-300"
-          style={{ width: \`\${progress}%\` }}
+          style={{ width: `${progress}%` }}
         />
       </div>
     </div>
