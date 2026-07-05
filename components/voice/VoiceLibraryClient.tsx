@@ -58,14 +58,18 @@ const SEED_VOICES: VoiceProfile[] = [
 // ── Component ───────────────────────────────────────────────────────────────
 
 export default function VoiceLibraryClient() {
-  const { voices, setVoices } = useVoiceStore();
+  const { voices, fetchVoices, setVoices } = useVoiceStore();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Seed store once on first mount if empty
+  // Load voices on mount; fallback to seed data if none
   useEffect(() => {
-    if (voices.length === 0) {
-      setVoices(SEED_VOICES);
-    }
+    const init = async () => {
+      await fetchVoices();
+      if (voices.length === 0) {
+        setVoices(SEED_VOICES);
+      }
+    };
+    init();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

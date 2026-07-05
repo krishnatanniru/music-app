@@ -1,27 +1,27 @@
 // lib/store/voiceStore.ts
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
-
-export interface VoiceProfile {
-  id: string
-  name: string
-  url: string
-  createdAt: string
-  duration: number
-}
+import type { VoiceProfile } from '@/lib/types';
 
 interface VoiceState {
-  voices: VoiceProfile[]
-  fetchVoices: () => Promise<void>
-  addVoice: (file: File, name: string) => Promise<void>
-  deleteVoice: (id: string) => Promise<void>
-  renameVoice: (id: string, newName: string) => Promise<void>
+  voices: VoiceProfile[];
+  setVoices: (voices: VoiceProfile[]) => void;
+  fetchVoices: () => Promise<void>;
+  addVoice: (file: File, name: string) => Promise<void>;
+  deleteVoice: (id: string) => Promise<void>;
+  renameVoice: (id: string, newName: string) => Promise<void>;
 }
 
 export const useVoiceStore = create<VoiceState>()(
   devtools((set, get) => ({
     voices: [],
     setVoices: (voices: VoiceProfile[]) => set({ voices }),
+    fetchVoices: async () => {
+      const res = await fetch('/api/voice');
+      if (!res.ok) throw new Error('Failed to fetch voices');
+      const data: VoiceProfile[] = await res.json();
+      set({ voices: data });
+    },
     addVoice: async (file, name) => {
       const form = new FormData()
       form.append('file', file)

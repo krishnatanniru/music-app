@@ -13,7 +13,7 @@ export async function GET(req: Request) {
   }
   const { data, error } = await supabase
     .from('voice_profiles')
-    .select('id, name, url, created_at, duration')
+    .select('id, name, preview_url, created_at, duration')
     .eq('user_id', user.id)
     .order('created_at', { ascending: false });
   if (error) {
@@ -22,7 +22,7 @@ export async function GET(req: Request) {
   const voices = data.map(v => ({
     id: v.id,
     name: v.name,
-    url: v.url,
+    previewUrl: v.preview_url,
     createdAt: v.created_at,
     duration: v.duration,
   }));
@@ -64,7 +64,7 @@ export async function POST(req: Request) {
     .insert({
       user_id: user.id,
       name,
-      url: publicUrl,
+      preview_url: publicUrl,
       duration,
     })
     .select();
@@ -76,7 +76,7 @@ export async function POST(req: Request) {
   const profile = {
     id: inserted.id,
     name: inserted.name,
-    url: inserted.url,
+    previewUrl: inserted.preview_url,
     createdAt: inserted.created_at,
     duration: inserted.duration,
   };
