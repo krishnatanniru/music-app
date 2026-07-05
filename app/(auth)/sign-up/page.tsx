@@ -27,8 +27,7 @@ export default function SignUpPage() {
           variables: {
             colorPrimary: '#8b5cf6',
             colorBackground: 'transparent',
-            colorInputBackground: 'rgba(255,255,255,0.05)',
-            colorInputText: '#f8fafc',
+
             colorText: '#f8fafc',
             colorTextSecondary: 'rgba(248,250,252,0.5)',
             colorNeutral: '#94a3b8',
