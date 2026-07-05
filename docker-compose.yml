@@ -1,0 +1,140 @@
+version: '3.9'
+
+services:
+  # ============================================================
+  # Next.js Application
+  # ============================================================
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runner
+    container_name: echoverse-app
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=${DATABASE_URL}
+      - REDIS_URL=${REDIS_URL}
+      - NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=${NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
+      - CLERK_SECRET_KEY=${CLERK_SECRET_KEY}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - echoverse-network
+
+  # ============================================================
+  # BullMQ Worker (Generation Queue Processor)
+  # ============================================================
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    container_name: echoverse-worker
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=${DATABASE_URL}
+      - REDIS_URL=${REDIS_URL}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ELEVENLABS_API_KEY=${ELEVENLABS_API_KEY}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - echoverse-network
+
+  # ============================================================
+  # PostgreSQL Database (for local dev; use Supabase in production)
+  # ============================================================
+  postgres:
+    image: postgres:16-alpine
+    container_name: echoverse-postgres
+    environment:
+      POSTGRES_USER: echoverse
+      POSTGRES_PASSWORD: echoverse_dev_password
+      POSTGRES_DB: echoverse
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U echoverse']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - echoverse-network
+
+  # ============================================================
+  # Redis (for local dev; use Upstash in production)
+  # ============================================================
+  redis:
+    image: redis:7-alpine
+    container_name: echoverse-redis
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes --requirepass echoverse_dev_redis_password
+    healthcheck:
+      test: ['CMD', 'redis-cli', '-a', 'echoverse_dev_redis_password', 'ping']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - echoverse-network
+
+  # ============================================================
+  # Redis Commander (Redis GUI - dev only)
+  # ============================================================
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: echoverse-redis-ui
+    profiles:
+      - dev-tools
+    environment:
+      - REDIS_HOSTS=local:redis:6379:0:echoverse_dev_redis_password
+    ports:
+      - '8081:8081'
+    depends_on:
+      - redis
+    networks:
+      - echoverse-network
+
+  # ============================================================
+  # pgAdmin (Postgres GUI - dev only)
+  # ============================================================
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: echoverse-pgadmin
+    profiles:
+      - dev-tools
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@echoverse.local
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - '5050:80'
+    depends_on:
+      - postgres
+    networks:
+      - echoverse-network
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  echoverse-network:
+    driver: bridge
