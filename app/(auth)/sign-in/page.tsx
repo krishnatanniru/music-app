@@ -28,19 +28,6 @@ export default function SignInPage() {
             socialButtonsVariant: 'iconButton',
             socialButtonsPlacement: 'top',
           },
-          variables: {
-            colorPrimary: '#8b5cf6',
-            colorBackground: 'transparent',
-
-            colorText: '#f8fafc',
-            colorTextSecondary: 'rgba(248,250,252,0.5)',
-            colorNeutral: '#94a3b8',
-            colorDanger: '#f87171',
-            colorSuccess: '#34d399',
-            borderRadius: '0.75rem',
-            fontFamily: 'var(--font-sora), var(--font-inter), sans-serif',
-            fontSize: '0.9375rem',
-          },
           elements: {
             rootBox: 'w-full',
             card: 'bg-transparent shadow-none border-0 p-0',
