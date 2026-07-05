@@ -2,12 +2,12 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-export const useUIStore = create((set) => ({
+export const useUIStore = create<any>((set) => ({
   sidebarOpen: true,
-  toggleSidebar: () => set((state) => ({ sidebarOpen: !state.sidebarOpen })),
+  toggleSidebar: () => set((state: any) => ({ sidebarOpen: !state.sidebarOpen })),
 }));
 
-export const useSongStore = create((set) => ({
+export const useSongStore = create<any>((set) => ({
   songs: [],
   setSongs: (songs: any) => set({ songs }),
 }));
