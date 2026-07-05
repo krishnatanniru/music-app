@@ -1,4 +1,4 @@
-// Server Component — no 'use client' needed
+'use client';
 
 interface Feature {
   icon: React.ReactNode

@@ -1,4 +1,4 @@
-// Server Component — no 'use client' needed
+'use client';
 
 const steps = [
   {
