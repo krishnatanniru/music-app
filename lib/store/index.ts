@@ -12,8 +12,14 @@ export const useSongStore = create((set) => ({
   setSongs: (songs: any) => set({ songs }),
 }));
 
-export const useVoiceStore = create((set) => ({
+export const useVoiceStore = create<any>((set) => ({
   voices: [],
   setVoices: (voices: any) => set({ voices }),
   addVoice: (voice: any) => set((state: any) => ({ voices: [...state.voices, voice] })),
+  updateVoice: (id: string, updates: any) => set((state: any) => ({
+    voices: state.voices.map((v: any) => v.id === id ? { ...v, ...updates } : v)
+  })),
+  removeVoice: (id: string) => set((state: any) => ({
+    voices: state.voices.filter((v: any) => v.id !== id)
+  })),
 }));
