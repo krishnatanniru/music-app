@@ -33,16 +33,5 @@
     }
   ],
   "env": {
-    "NEXT_TELEMETRY_DISABLED": "1"
-  },
-  "crons": [
-    {
-      "path": "/api/cron/cleanup-expired-jobs",
-      "schedule": "0 2 * * *"
-    },
-    {
-      "path": "/api/cron/send-notifications",
-      "schedule": "*/15 * * * *"
-    }
-  ]
+  }
 }
