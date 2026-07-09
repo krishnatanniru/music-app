@@ -1,0 +1,296 @@
+/* ============================================================
+   Notifications.module.css — Notifications Page Styles
+   ============================================================ */
+
+/* ── Page Header ─────────────────────────────────────────── */
+.pageHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.headerLeft {}
+
+.pageTitle {
+  font-size: 1.6rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #ffffff, #c4b5fd);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  margin-bottom: 0.25rem;
+  font-family: 'Sora', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.unreadCount {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 100px;
+  background: linear-gradient(135deg, #a855f7, #ec4899);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: white;
+  -webkit-text-fill-color: white;
+  font-family: 'Inter', sans-serif;
+  vertical-align: middle;
+}
+
+.pageSubtitle {
+  font-size: 0.85rem;
+  color: rgba(148, 163, 184, 0.75);
+}
+
+.markAllBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1.1rem;
+  border-radius: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(168, 85, 247, 0.9);
+  background: rgba(168, 85, 247, 0.1);
+  border: 1px solid rgba(168, 85, 247, 0.25);
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.markAllBtn:hover {
+  background: rgba(168, 85, 247, 0.2);
+  border-color: rgba(168, 85, 247, 0.5);
+  color: #c4b5fd;
+}
+
+.markAllBtnDone {
+  color: rgba(16, 185, 129, 0.9);
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.25);
+}
+
+.markAllBtnDone:hover {
+  background: rgba(16, 185, 129, 0.2);
+  border-color: rgba(16, 185, 129, 0.5);
+  color: #6ee7b7;
+}
+
+/* ── Filter Bar ──────────────────────────────────────────── */
+.filterBar {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 0.875rem;
+  padding: 0.3rem;
+  width: fit-content;
+}
+
+.filterTab {
+  padding: 0.4rem 1rem;
+  border-radius: 0.6rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(148, 163, 184, 0.8);
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  background: transparent;
+}
+
+.filterTab:hover {
+  color: #f8fafc;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.filterTabActive {
+  background: linear-gradient(135deg, #a855f7, #ec4899);
+  color: white;
+  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.35);
+}
+
+/* ── Notification List ───────────────────────────────────── */
+.notificationList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+/* ── Notification Item ───────────────────────────────────── */
+.notifItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+  padding: 1rem 1.25rem;
+  border-radius: 0.875rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.notifItem:hover {
+  background: rgba(255, 255, 255, 0.055);
+  border-color: rgba(255, 255, 255, 0.12);
+  transform: translateX(3px);
+}
+
+.notifItemUnread {
+  background: rgba(168, 85, 247, 0.05);
+  border-color: rgba(168, 85, 247, 0.15);
+}
+
+.notifItemUnread:hover {
+  background: rgba(168, 85, 247, 0.08);
+  border-color: rgba(168, 85, 247, 0.25);
+}
+
+/* ── Icon ────────────────────────────────────────────────── */
+.iconWrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.iconGeneration {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+}
+
+.iconLike {
+  background: rgba(236, 72, 153, 0.15);
+  color: #ec4899;
+}
+
+.iconComment {
+  background: rgba(79, 141, 255, 0.15);
+  color: #4f8dff;
+}
+
+.iconFollow {
+  background: rgba(168, 85, 247, 0.15);
+  color: #a855f7;
+}
+
+.iconSystem {
+  background: rgba(245, 158, 11, 0.15);
+  color: #f59e0b;
+}
+
+/* ── Content ─────────────────────────────────────────────── */
+.notifContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.notifTitle {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #f8fafc;
+  margin-bottom: 0.2rem;
+  font-family: 'Sora', sans-serif;
+}
+
+.notifMessage {
+  font-size: 0.8rem;
+  color: rgba(148, 163, 184, 0.8);
+  line-height: 1.5;
+}
+
+.notifMessage em {
+  font-style: normal;
+  color: rgba(196, 181, 253, 0.9);
+  font-weight: 600;
+}
+
+/* ── Meta ────────────────────────────────────────────────── */
+.notifMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.45rem;
+}
+
+.notifTime {
+  font-size: 0.72rem;
+  color: rgba(148, 163, 184, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.notifTypeBadge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 0.1rem 0.45rem;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ── Unread Dot ──────────────────────────────────────────── */
+.unreadDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #a855f7, #ec4899);
+  flex-shrink: 0;
+  margin-top: 4px;
+  box-shadow: 0 0 8px rgba(168, 85, 247, 0.6);
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+.unreadDotHidden {
+  visibility: hidden;
+}
+
+/* ── Empty State ─────────────────────────────────────────── */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 4rem 2rem;
+  text-align: center;
+  color: rgba(148, 163, 184, 0.5);
+}
+
+.emptyIcon {
+  font-size: 2.5rem;
+  opacity: 0.5;
+}
+
+.emptyTitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: rgba(148, 163, 184, 0.7);
+}
+
+.emptyText {
+  font-size: 0.8rem;
+  max-width: 280px;
+  line-height: 1.5;
+}
+
+/* ── Keyframes ───────────────────────────────────────────── */
+@keyframes pulseGlow {
+  0%, 100% { opacity: 1; box-shadow: 0 0 8px rgba(168, 85, 247, 0.6); }
+  50%       { opacity: 0.5; box-shadow: 0 0 4px rgba(168, 85, 247, 0.3); }
+}

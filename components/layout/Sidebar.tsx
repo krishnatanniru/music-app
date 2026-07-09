@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, Music, Mic, Library, Users, User, Shield } from 'lucide-react';
+import { LayoutDashboard, Music, Mic, Library, Users, User, Shield, MessageSquare, Bell } from 'lucide-react';
 import { cn } from '@/lib/utils/cn';
 import { useUIStore } from '@/lib/store';
 
@@ -14,6 +14,8 @@ export function Sidebar() {
     { name: 'Create Song', href: '/create', icon: Music },
     { name: 'Voice Library', href: '/voice-library', icon: Mic },
     { name: 'Community', href: '/community', icon: Users },
+    { name: 'Chat', href: '/chat', icon: MessageSquare },
+    { name: 'Notifications', href: '/notifications', icon: Bell },
     { name: 'Profile', href: '/profile', icon: User },
     { name: 'Admin', href: '/admin', icon: Shield },
   ];
