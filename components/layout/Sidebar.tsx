@@ -11,7 +11,7 @@ export function Sidebar() {
 
   const links = [
     { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
-    { name: 'Create Song', href: '/create', icon: Music },
+    { name: 'Create Song', href: '/song/create', icon: Music },
     { name: 'Voice Library', href: '/voice-library', icon: Mic },
     { name: 'Community', href: '/community', icon: Users },
     { name: 'Chat', href: '/chat', icon: MessageSquare },
