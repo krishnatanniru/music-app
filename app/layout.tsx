@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Sora, Inter } from 'next/font/google';
 import { ClerkProvider } from '@clerk/nextjs';
 import { Toaster } from 'sonner';
+import { GenerationModal } from '@/components/generation/GenerationModal';
 import './globals.css';
 
 const sora = Sora({
@@ -96,6 +97,7 @@ export default function RootLayout({
       >
         <body className="bg-[#050508] text-[#f8fafc] antialiased">
           {children}
+          <GenerationModal />
           <Toaster position="top-right" theme="dark" richColors closeButton />
         </body>
       </html>
